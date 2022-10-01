@@ -1,31 +1,52 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive } from 'vue';
+import Input from './components/Input.vue';
+import Result from './components/Result.vue';
+
+const data = reactive({
+  p1: 'Juanjo',
+  textArea1:
+    'Estoy con la tarea ZZ-1671 del proyecto Nueva Zona Zurich, y he visto que ahora mismo en el código hay un método onConstructionYearChange() que se ejecuta cuando se cambia el año de construcción, pero lo que hace es reasignar el valor mínimo de cada uno de los otros años de reformas.',
+  textArea2: '[code img]',
+  img: '',
+  p2: '¿La pregunta es, este comportamiento es el correcto?',
+  textArea3:
+    'Lo que entiendo de la tarea es que cuando el año de construcción se actualice, se tendría que ejecutar de nuevo la validación de los años de reformas para verificar que realmente el año de construcción es menor que los años de reformas.',
+  p3: 'Alexandru Bejenaru',
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app">
+    <h1>Bonifications Email</h1>
+    <div class="container">
+      <Input :data="data" />
+      <Result :data="data" />
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<style scoped lang="scss">
+h1 {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.container {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  & > div {
+    width: 50%;
+  }
 }
 </style>
